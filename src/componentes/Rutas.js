@@ -1,5 +1,8 @@
 import Principal from './principal';
 import Proceso_metamorfosis from './Proceso_metamorfosis';
+import Aporte from './Aporte';
+import Administrador from './Administrador';
+import AgregarEspecie from './AgregarEspecie';
 
 import {
   BrowserRouter as Router,
@@ -12,9 +15,12 @@ function rutas() {
     <div>
       <Router>
         <Switch>
-          <Route path="/Pagina_principal">  <Principal /> </Route>
-          <Route path="/Proceso_metamorfosis">  <Proceso_metamorfosis /> </Route>
+          <Route path="/Pagina_principal">      <Principal />             </Route>
+          <Route path="/Proceso_metamorfosis">  <Proceso_metamorfosis />  </Route>
+          <Route path="/Aporte">                <Aporte />                </Route>
+          <Route path="/Administrador">         <Administrador />         </Route>
 
+          <Route path="/AgregarEspecie">        <AgregarEspecie />         </Route>
           <Route path="/">  <Principal /> </Route>
         </Switch>
       </Router>

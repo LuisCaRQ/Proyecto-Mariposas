@@ -24,7 +24,7 @@ class Navbar extends React.Component{
                     </li>
                     
                     <li className="nav-item" id="elemento">
-                        <a className="nav-link" href="Proceso_metamorfosis"> Proceso de metamorfosis</a>
+                        <a className="nav-link" href="/Proceso_metamorfosis"> Proceso de metamorfosis</a>
                     </li>
 
                     <li className="nav-item" id="elemento">
@@ -44,7 +44,7 @@ class Navbar extends React.Component{
                     </li>
 
                     <li className="nav-item" id="elemento">
-                        <a className="nav-link" href="#"> Aporte</a>
+                        <a className="nav-link" href="/Aporte"> Aporte</a>
                     </li>
 
                     <li className="nav-item" id="elemento">
@@ -60,7 +60,7 @@ class Navbar extends React.Component{
                     </li>
 
                     <li className="nav-item" id="elemento">
-                        <a className="nav-link" href="#"> Administrador</a>
+                        <a className="nav-link" href="/Administrador"> Administrador</a>
                     </li>
 
                     </ul>
