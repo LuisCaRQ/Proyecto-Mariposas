@@ -3,7 +3,7 @@ import Style from './../css/Style-aporte.css';
 import Image from '../images/metamorfosis.jpg'
 import {Button, Form } from "react-bootstrap";
 
-class proceso_metamorfosis extends React.Component{
+class aporte extends React.Component{
     state = {
         foto: null,
     }
@@ -83,4 +83,4 @@ class proceso_metamorfosis extends React.Component{
     }
 }
 
-export default proceso_metamorfosis;
+export default aporte;

@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './../css/Style-administrador.css';
 import {Button } from "react-bootstrap";
 
-class principal extends React.Component{
+class administrador extends React.Component{
     render(){
         
         return(
@@ -27,7 +27,7 @@ class principal extends React.Component{
                     
                     </div>
 
-
+                
                     <div class= "administradorRight">
                             <a href="#">  <button class ="button admin">Registrar Admin</button> </a>
                             <br/>  <br/>
@@ -53,4 +53,4 @@ class principal extends React.Component{
     }
 }
 
-export default principal;
+export default administrador;
