@@ -26,10 +26,21 @@
 	position: relative
 }
 
-footer {
+#footerBottom {
     padding: 30px 100px;
     background: rgba(50,50,50);
     position: bottom;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#footerAbsolute {
+    padding: 30px 100px;
+    background: rgba(50,50,50);
+    position: Absolute;
     bottom: 0;
     width: 100%;
     color: white;

@@ -14,7 +14,7 @@ class principal extends React.Component{
                     <hr />
                 </div>
                 <div>
-                    <footer id="footer">   
+                    <footer id="footerAbsolute">   
                         <div>Prototipo Metamorfosis</div>
                         <div>Versión 1.2 por Metamorfosis en Instituto Tecnológico de Costa Rica</div>
                         <div>Semestre II de 2020. Administración de Proyectos</div>            
