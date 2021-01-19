@@ -23,6 +23,9 @@ class administrador extends React.Component{
                             <br/>  <br/>
                             <a href="/Agregar_dato_curioso">  <button class ="button admin">Agregar dato curioso</button> </a>
                             <br/>  <br/>
+                            <a href="/EliminarDatoCurioso"> <button class ="button admin">Eliminar dato curioso</button> </a>
+                            <br/>  <br/>
+                            
                         </div>
                     
                     </div>
@@ -33,9 +36,9 @@ class administrador extends React.Component{
                             <br/>  <br/>
                             <a href="/Editar_Especie"> <button class ="button admin">Editar especie</button> </a>
                             <br/>  <br/>
-                            <a href="#"> <button class ="button admin">Bloquear usuario</button> </a>
+                            <a href="/BloquearUsuario"> <button class ="button admin">Bloquear usuario</button> </a>
                             <br/>  <br/>
-                            <a href="#"> <button class ="button admin">Eliminar dato curioso</button> </a>
+                            <a href="/Desbloquear_Usuario">  <button class ="button admin">Desbloquear Usuario</button> </a>
                             <br/>  <br/>
                     </div>
                 </div>

@@ -12,6 +12,10 @@ import Dato_curioso from './Agregar_dato_curioso';
 import Eliminar_especies from './Eliminar_especies';
 import Editar_Especie from './Editar_Especie';
 import Registrar_Administrador from './Registar_administrador';
+import EliminarDatoCurioso from './EliminarDatoCurioso';
+import BloquearUsuario from './BloquearUsuario';
+import Desbloquear_Usuario from './DesbloquearUsuario';
+
 
 import {
   BrowserRouter as Router,
@@ -25,30 +29,33 @@ function rutas() {
     <div>
       <Router>
         <Switch>
-          <Route path="/Pagina_principal">      <Principal />             </Route>
-          <Route path="/Proceso_metamorfosis">  <Proceso_metamorfosis />  </Route>
-          <Route path="/Aporte">                <Aporte />                </Route>
-          <Route path="/Administrador">         <Administrador />         </Route>
-          <Route path="/CatalogoOrugas">        <CatalogoOrugas />         </Route>
-          <Route path="/CatalogoMariposas">     <CatalogoMariposas />      </Route>
-          <Route path="/AgregarEspecie">        <AgregarEspecie />         </Route>
-          <Route path="/Propuestas">            <Propuestas />              </Route>
-          <Route path="/Avistamientos">         <Avistamientos />         </Route>
-          <Route path="/Login">                 <Login />                 </Route>
-          <Route path="/Register">              <Registrar />           </Route>
-          <Route path="/Agregar_dato_curioso">  <Dato_curioso  />           </Route>
-          <Route path="/Eliminar_especies">     <Eliminar_especies  />           </Route>
-          <Route path="/Editar_Especie">        <Editar_Especie  />           </Route>
-          <Route path="/Registrar_Administrador">        <Registrar_Administrador  />           </Route>
+          <Route path="/Pagina_principal">         <Principal />               </Route>
+          <Route path="/Proceso_metamorfosis">     <Proceso_metamorfosis />    </Route>
+          <Route path="/Aporte">                   <Aporte />                  </Route>
+          <Route path="/Administrador">            <Administrador />           </Route>
+          <Route path="/CatalogoOrugas">           <CatalogoOrugas />          </Route>
+          <Route path="/CatalogoMariposas">        <CatalogoMariposas />       </Route>
+          <Route path="/AgregarEspecie">           <AgregarEspecie />          </Route>
+          <Route path="/Propuestas">               <Propuestas />              </Route>
+          <Route path="/Avistamientos">            <Avistamientos />           </Route>
+          <Route path="/Login">                    <Login />                   </Route>
+          <Route path="/Register">                 <Registrar />               </Route>
+          <Route path="/Agregar_dato_curioso">     <Dato_curioso />            </Route>
+          <Route path="/Eliminar_especies">        <Eliminar_especies />       </Route>
+          <Route path="/Editar_Especie">           <Editar_Especie />          </Route>
+          <Route path="/Registrar_Administrador">  <Registrar_Administrador /> </Route>
+          <Route path="/EliminarDatoCurioso">      <EliminarDatoCurioso />     </Route>
+          <Route path="/BloquearUsuario">          <BloquearUsuario />         </Route>
+          <Route path="/Desbloquear_Usuario">      <Desbloquear_Usuario />     </Route>
 
           <Route path="/">  <Principal /> </Route>
-          
+
         </Switch>
       </Router>
 
-       
+
     </div>
-   
+
   );
 }
 

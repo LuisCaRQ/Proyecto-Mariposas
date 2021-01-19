@@ -1,6 +1,5 @@
 import React from 'react';
 import Style from './../css/Style-aporte.css';
-import Image from '../images/metamorfosis.jpg'
 import {Button, Form } from "react-bootstrap";
 import axios from 'axios'
 
