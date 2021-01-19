@@ -41,9 +41,9 @@ export const Navbar = () => {
                         <a className="nav-link" href="/Proceso_metamorfosis"> Proceso de metamorfosis</a>
                     </li>
 
-                    {(logged)&&<li className="nav-item" id="elemento">
-                        <a className="nav-link" href="#"> Reporte de avistamientos</a>
-                    </li>}
+                    <li className="nav-item" id="elemento">
+                        <a className="nav-link" href="/Avistamientos"> Reporte de avistamientos</a>
+                    </li>
 
                     <li className="nav-item dropdown" id="elemento">
                         <a className="nav-link dropdown-toggle" href="#" id="navadd" data-toggle="dropdown"> Catálogo </a>

@@ -15,6 +15,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Avistamientos from './Avistamientos';
 
 function rutas() {
   return (
@@ -29,8 +30,9 @@ function rutas() {
           <Route path="/CatalogoMariposas">     <CatalogoMariposas />      </Route>
           <Route path="/AgregarEspecie">        <AgregarEspecie />         </Route>
           <Route path="/Propuestas">            <Propuestas />              </Route>
-          <Route path="/Login">                 <Login />                 </Route>
-          <Route path="/Register">              <Registrar />           </Route>
+          <Route path="/Login">                 <Login />                   </Route>
+          <Route path="/Register">              <Registrar />             </Route>
+          <Route path="/Avistamientos">         <Avistamientos />         </Route>
           <Route path="/">  <Principal /> </Route>
           
         </Switch>
