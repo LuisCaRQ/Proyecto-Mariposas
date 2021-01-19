@@ -7,7 +7,7 @@ class Navbar extends React.Component{
             //size = "15"
             <font face="Arial">
             <nav className="navbar navbar-expand-sm bg-white navbar-light" >
-                <a class="navbar-brand" href="/Pagina_principal"> 
+                <a className="navbar-brand" href="/Pagina_principal"> 
                 <img src="./images/icono.png" alt="Logo" width="55" height="40" alt=""/>
                 </a> 
                 
@@ -62,6 +62,14 @@ class Navbar extends React.Component{
                     <li className="nav-item" id="elemento">
                         <a className="nav-link" href="/Administrador"> Administrador</a>
                     </li>
+
+                    <button
+                        
+                        className="nav-item nav-link btn" 
+                        
+                    >
+                        Logout
+                    </button>
 
                     </ul>
                 </div>
