@@ -15,6 +15,7 @@ import Registrar_Administrador from './Registar_administrador';
 import EliminarDatoCurioso from './EliminarDatoCurioso';
 import BloquearUsuario from './BloquearUsuario';
 import Desbloquear_Usuario from './DesbloquearUsuario';
+import QuienesSomos from './QuienesSomos';
 
 
 import {
@@ -47,6 +48,7 @@ function rutas() {
           <Route path="/EliminarDatoCurioso">      <EliminarDatoCurioso />     </Route>
           <Route path="/BloquearUsuario">          <BloquearUsuario />         </Route>
           <Route path="/Desbloquear_Usuario">      <Desbloquear_Usuario />     </Route>
+          <Route path="/QuienesSomos">             <QuienesSomos />     </Route>
 
           <Route path="/">  <Principal /> </Route>
 
