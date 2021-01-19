@@ -100,10 +100,10 @@ class Avistamientos extends React.Component{
     }
 
     getColor(d){
-        return d > 5 ? '#730202' :
-               d > 4  ? '#730202' :
-               d > 3  ? '#E50E0E' :
-               d > 2  ? '#FC7050' :
+        return d > 40 ? '#730202' :
+               d > 30  ? '#730202' :
+               d > 20  ? '#E50E0E' :
+               d > 10  ? '#FC7050' :
                d > 1   ? '#FF9280' :
                           '#FFFFFF';
     };
