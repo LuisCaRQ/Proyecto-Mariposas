@@ -4,7 +4,107 @@ import { Button, Form } from "react-bootstrap";
 import axios from 'axios'
 
 class Eliminar_especies extends React.Component {
+    state ={
+        name: "",
+        scientificName: "",
+        family: "",
+        genus: "",
+        description: "",
+        stage: "",
+        photo: "",
+        especieSeleccionada: "",
+        especie: {photos:[]},
+        mariposas: [],
+        orugas: [],
+        index: 0
+
+    }
+
+    componentDidMount(){
+        axios.get('http://localhost:4000/api/species/getButterflies')
+            .then(response=> {  
+                this.setState({mariposas: response.data.result})
+            })
+            .catch(error => {
+                this.handleSubmit(error)
+            })
+        axios.get('http://localhost:4000/api/species/getCaterpillars')
+            .then(response=> {  
+                this.setState({orugas: response.data.result})
+            })
+            .catch(error => {
+                this.handleSubmit(error)
+            })
+
+    }
+
+
+    selectMovement = (event) =>{
+        var selectedIndex = event.target.options.selectedIndex;
+        var customAtrribute= event.target.options[selectedIndex].getAttribute('si');
+        this.setState({especieSeleccionada: customAtrribute})
+        axios.get('http://localhost:4000/api/species/getSpeciesById/'+customAtrribute)
+        .then(response=> {  
+            console.log(response.data.result)
+            this.setState({especie: response.data.result})
+        })
+        .catch(error => {
+            this.handleSubmit(error)
+        })
+    }
+
+
+
+    onSubmit = async (e) => {
+
+        e.preventDefault();
+
+        let fotoUrl
+
+        if(this.state.photo === null){
+            fotoUrl = "https://res.cloudinary.com/dhh7tuvtw/image/upload/v1610998076/e2cvgro6kwt7f7kijm5o.jpg"
+
+
+        }else{
+            
+            console.log("ff xd")
+            const formData = new FormData();
+            formData.append('upload_preset','unitarum-img');
+            formData.append('file',this.state.photo);
+
+        
+            const fotoRes = await axios.post('https://api.cloudinary.com/v1_1/dhh7tuvtw/upload', formData)
+            console.log(fotoRes) 
+
+            fotoUrl = fotoRes.data.secure_url;
+        }
+        try {
+            console.log(this.state.especieSeleccionada)
+            await axios.delete('http://localhost:4000/api/species/delete/'+this.state.especieSeleccionada, {
+                name: this.state.name,
+                scientificName: this.state.scientificName,
+                family: this.state.family,
+                genus: this.state.genus,
+                description: this.state.description,
+                stage: this.state.stage,
+                photos: [fotoUrl],
+                accepted: true
+             })
+
+             
+             this.setState({ok: true, errors: {}, msg: '', created: true})
+          
+        } catch (error) {
+            console.log(error)
+           // this.setState({ok: error.response.data.ok, msg: error.response.data.msg})
+            console.log(this.state)
+                
+        }
+    }
+
+    
     render() {
+        const {mariposas,orugas,especie,index , name , scientificName, family, genus, description, stage} = this.state
         return (
             <div>
                 <div class="center container  p-8 py-5 my-3 bg-dark text-white mt-5">
@@ -14,12 +114,26 @@ class Eliminar_especies extends React.Component {
                         </h1>
                         <hr class="aporte" />
                         <Form>
-                            <form class="barra">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
-                                <br />
-                                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
-                                <br />
-                            </form>
+                            <Form.Group controlId="formMovement">
+                                    <select defaultValue="" className="custom-select" onChange={this.selectMovement}>
+                                    <option disabled={true} value="">Seleccione una especie</option>    
+                                    {
+                                        mariposas.length ?
+                                        mariposas.map( (especie ) => 
+                                            <option key = {especie._id} si = {especie._id}  >  {especie.stage} - {especie.scientificName} : {especie.name} </option>                             
+                                        ):
+                                        null
+                                    }
+                                    {
+                                        orugas.length ?
+                                        orugas.map( (especie ) => 
+                                            <option key = {especie._id}  si = {especie._id} > {especie.stage} - {especie.scientificName} : {especie.name} </option>                             
+                                        ):
+                                        null
+                                    }
+                                    </select>
+                                </Form.Group>
+
 
                             <div class="textoAporte">
                                 <div class="aporteLeft">
@@ -27,24 +141,24 @@ class Eliminar_especies extends React.Component {
                                         <br />
                                         <Form.Label>Nombre:</Form.Label>
                                         <br />
-                                        <h5 class="EliminarEspecie">Aquí voy</h5>
+                                        <h5 class="EliminarEspecie">{especie.name}</h5>
                                         <hr class="EliminarEspecie" />
 
                                 
                                     <Form.Label>Nombre cientifico de la especie:</Form.Label>
-                                        <h5 class="EliminarEspecie">Aquí voy</h5>
+                                        <h5 class="EliminarEspecie">{especie.scientificName}</h5>
                                         <hr class="EliminarEspecie" />
                                         <br />
                                         <Form.Label>Familia de la especie:</Form.Label>
-                                        <h5 class="EliminarEspecie">Aquí voy</h5>
+                                        <h5 class="EliminarEspecie">{especie.family}</h5>
                                         <hr class="EliminarEspecie" />
                                         <br />
                                         <Form.Label>Genero:</Form.Label>
-                                        <h5 class="EliminarEspecie">Aquí voy</h5>
+                                        <h5 class="EliminarEspecie">{especie.genus}</h5>
                                         <hr class="EliminarEspecie" />
                                         <br />
                                         <div class="btn center_EliminarAporte">
-                                            <Button variant="danger" type="submit" >
+                                            <Button variant="danger" type="submit"  onClick={this.onSubmit}  >
                                                 Eliminar especie
                                             </Button>
                                         </div>
@@ -55,11 +169,11 @@ class Eliminar_especies extends React.Component {
                                 <div class="aporteRight">
                                     <br />
                                     <Form.Label>Descripción:</Form.Label>
-                                    <h5 class="EliminarEspecie">Aquí voy</h5>
+                                    <h5 class="EliminarEspecie">{especie.description}</h5>
                                     <hr class="EliminarEspecie" />
                                     
                                     <Form.Label>Etapa:</Form.Label>
-                                    <h5 class="EliminarEspecie">Aquí voy</h5>
+                                    <h5 class="EliminarEspecie">{especie.stage}</h5>
                                     <hr class="EliminarEspecie" />
                                     <br />
 
@@ -67,7 +181,7 @@ class Eliminar_especies extends React.Component {
                                         <Form.Label>Fotos:</Form.Label>
                                         <br />
                                         <div class="center_EliminarAporte">
-                                            <img className="catalogo" src={"https://images.unsplash.com/photo-1557318041-1ce374d55ebf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"} />
+                                            <img className="catalogo" src={especie.photos[index]} />
                                         </div>
                                         <hr class="EliminarEspecie" />
                                     </Form.Group>
