@@ -20,6 +20,9 @@ class Ver_especie extends React.Component{
         }else{
             const mt2 = await axios.post("http://localhost:4000/api/species/getMatchButterfly/", {scientificName: this.state.especie.scientificName})
             this.setState({match: mt2.data.match})
+            if(this.state.match==={}){
+                this.setState({match: {stage: "Sin informacion"}})
+            }
         }
     }
 
@@ -43,7 +46,7 @@ class Ver_especie extends React.Component{
                 </div>
 
                 <div class="verEspecieRight">
-                    <h1 class="proceso">{this.state.match.stage}:</h1>  
+                    <h1 class="proceso">Sin información:</h1>  
                     <img className="verEspecie" src={this.state.match.photos} />
                 </div>
                 <div>
