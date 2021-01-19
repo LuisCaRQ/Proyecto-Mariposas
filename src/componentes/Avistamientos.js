@@ -3,17 +3,16 @@ import Navbar from "./Navbar"
 import React, {createRef} from 'react';
 import {MapContainer, TileLayer, GeoJSON} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import Style from './../css/Style-proceso.css';
-import Image from '../images/metamorfosis.jpg'
 
+import axios from 'axios'
 import mapData from '../assets/data.json'
 
 class Avistamientos extends React.Component{
-    constructor(){
-        super();
-        this.mapRef = createRef();
-    }
-    state = {};
+    
+    state = {
+        codigo: "",
+        mariposas: 0
+    };
 
     componentDidMount(){
         //console.log(mapData.features[0]);
@@ -47,15 +46,43 @@ class Avistamientos extends React.Component{
         });
     }
     
+    getVal = async(cod)=>{
+        return await axios.get('http://localhost:4000/api/dm/getByCode/' + cod);
+    }
 
-    onEachDistrito = (distrito, layer) =>{
+    onEachDistrito = async(distrito, layer) =>{
         const mariposasDistr = distrito.properties.NOM_DIST;
         const mariposas = distrito.properties.Mariposas;
         const idMar = distrito.properties.CODIGO;
-        console.log(mariposasDistr);
-        //int caca = Consulta base 
-        layer.bindPopup("¡" + mariposasDistr + " tiene: " + mariposas + " avistamientos de mariposas!");
-        layer.options.fillColor = this.getColor(mariposas);
+        //console.log(mariposasDistr);
+        //console.log(Object.keys(response.data.result).lenght + "Para el cod: " + idMar);
+        //////////////////////////////////
+
+        this.getVal(idMar)
+        .then(response => {
+            console.log("mariposas " + response.data.mariposas + " Y el codigo: " + response.data.codigo);
+            
+                //console.log("AAAAAAAAAA si entré :D");
+                var cant = response.data.mariposas;
+                var name = response.data.codigo;
+                layer.bindPopup("¡" + name + " tiene: " + cant + " avistamientos de mariposas!");
+                layer.options.fillColor = this.getColor(cant);
+            
+            
+            
+        })
+        .catch(e => {
+            console.log("Algo salio mal con " + e);
+        });
+
+
+        ///////////////////////////////
+
+        /*layer.bindPopup("¡" + mariposasDistr + " tiene: " + mariposas + " avistamientos de mariposas!");
+        layer.options.fillColor = this.getColor(mariposas);*/
+
+        ///////////////////////////////
+
 
         layer.on({
             mouseover: (event) => {
