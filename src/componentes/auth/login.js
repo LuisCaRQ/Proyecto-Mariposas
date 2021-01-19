@@ -32,7 +32,7 @@ export const LoginForm = () => {
                     payload: {
                         id: res.data.uid,
                         nombre: res.data.name,
-                        isAdmin: res.data.isAdmin
+                        isAdmin: res.data.admin
                     }
                 })
                 console.log(user)
