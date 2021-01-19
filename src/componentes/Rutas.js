@@ -11,6 +11,7 @@ import Registrar from './Registrar';
 import Dato_curioso from './Agregar_dato_curioso';
 import Eliminar_especies from './Eliminar_especies';
 import Editar_Especie from './Editar_Especie';
+import Registrar_Administrador from './Registar_administrador';
 
 import {
   BrowserRouter as Router,
@@ -38,6 +39,7 @@ function rutas() {
           <Route path="/Agregar_dato_curioso">  <Dato_curioso  />           </Route>
           <Route path="/Eliminar_especies">     <Eliminar_especies  />           </Route>
           <Route path="/Editar_Especie">        <Editar_Especie  />           </Route>
+          <Route path="/Registrar_Administrador">        <Registrar_Administrador  />           </Route>
 
           <Route path="/">  <Principal /> </Route>
           
