@@ -2,10 +2,79 @@ import React from 'react';
 import Style from './../css/Style-aporte.css';
 import Image from '../images/metamorfosis.jpg'
 import {Button, Form } from "react-bootstrap";
+import axios from 'axios'
 
-class aporte extends React.Component{
+class proceso_metamorfosis extends React.Component{
     state = {
-        foto: null,
+        photo: null,
+        name: '',
+        scientificName: '',
+        family: '',
+        genus: '',
+        description: '',
+        stage: '',
+        ok: true,
+        msg: '',
+        created: false
+    }
+    
+    handleChange = e => {
+       
+        this.setState({
+                ...this.state,
+                [e.target.name]: e.target.value
+        })
+    }
+
+    onSubmit = async (e) => {
+
+        e.preventDefault();
+
+        let fotoUrl
+
+        if(this.state.photo === null){
+            fotoUrl = "https://res.cloudinary.com/dhh7tuvtw/image/upload/v1610998076/e2cvgro6kwt7f7kijm5o.jpg"
+
+
+        }else{
+            
+            console.log("ff xd")
+            const formData = new FormData();
+            formData.append('upload_preset','unitarum-img');
+            formData.append('file',this.state.photo);
+
+        
+            const fotoRes = await axios.post('https://api.cloudinary.com/v1_1/dhh7tuvtw/upload', formData)
+            console.log(fotoRes) 
+
+            fotoUrl = fotoRes.data.secure_url;
+        }
+        
+        try {
+            await axios.post('http://localhost:4000/api/species/addSpecies', {
+                name: this.state.name,
+                scientificName: this.state.scientificName,
+                family: this.state.family,
+                genus: this.state.genus,
+                description: this.state.description,
+                stage: this.state.stage,
+                photos: [fotoUrl]
+             })
+
+             
+             this.setState({ok: true, errors: {}, msg: '', created: true})
+          
+        } catch (error) {
+            console.log(error)
+            this.setState({ok: error.response.data.ok, msg: error.response.data.msg})
+            console.log(this.state)
+                
+        }
+    }
+
+    selectMovement = e => {
+        console.log(e.target.value)
+        this.setState({stage: e.target.value})
     }
 
     render(){
@@ -18,6 +87,13 @@ class aporte extends React.Component{
                             Realizar aporte
                         </h1>
                         <hr class = "aporte"/>
+                        <br/>
+                        {(this.state.created)&&   <div className="alert alert-info">
+                                <p>Aporte Enviado</p>
+                            </div>}
+                        {(!this.state.ok)&&   <div className="alert alert-danger">
+                                <n>{this.state.msg}</n>
+                            </div>}
                         <Form>      
                             <div class= "aporteLeft">
                                     <Form.Group onChange= {this.handleChange}>
@@ -36,7 +112,7 @@ class aporte extends React.Component{
 
                                 <div class= "aporteRight">
                                     <br/> 
-                                    <Form.Control as="textarea" rows="3" type="name" placeholder="Agrega una descripción de la especie" name = 'description' />
+                                    <Form.Control as="textarea" rows="3" type="name" placeholder="Agrega una descripción de la especie" name = 'description' onChange={this.handleChange}/>
                                     <br/> 
                                     <Form.Group controlId="formMovement">
                                         <select defaultValue="" className="custom-select" onChange={this.selectMovement}>
@@ -52,7 +128,7 @@ class aporte extends React.Component{
                                     <br/> 
                                     <input
                                         type="file"                    
-                                        onChange={(e)=> this.setState({foto: e.target.files[0]})}
+                                        onChange={(e)=> this.setState({photo: e.target.files[0]})}
                                         />
                                     </Form.Group>
                                 
@@ -61,7 +137,7 @@ class aporte extends React.Component{
                         </Form>
                     </p >
                     <div class="btn">
-                    <Button variant="secondary" type="submit" onClick = "#" >
+                    <Button variant="secondary" type="submit" onClick = {this.onSubmit} >
                             Mandar aporte
                     </Button>
                     </div>
@@ -83,4 +159,4 @@ class aporte extends React.Component{
     }
 }
 
-export default aporte;
+export default proceso_metamorfosis;
