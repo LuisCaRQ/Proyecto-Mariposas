@@ -1,8 +1,25 @@
 import React from 'react';
 import Style from './../css/Style-Catalogo.css';
 import { Button } from "react-bootstrap";
+import axios from 'axios'
+
 
 class catalogo_oruga extends React.Component {
+
+
+    state = {
+        orugas: []
+    }
+    componentDidMount(){
+        this.getOrugas()
+    }
+    getOrugas = async () => {
+        const orugas = await axios.get("http://localhost:4000/api/species/getCaterpillars/")
+        console.log(orugas.data.result)
+        this.setState({orugas: orugas.data.result})
+
+    }
+
     render() {
 
         return (
@@ -21,15 +38,25 @@ class catalogo_oruga extends React.Component {
                             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
                         <br/>
                     </form>
+                    <div className="row">
+                    {this.state.orugas.map((oruga => (
+                        <div className="col-md-4 auth_holder mr-10 p-2 " key={oruga._id}>
 
-                        <a href="#">
-                            <div className="card" >
-                                <img className="catalogo" src="https://images.unsplash.com/photo-1603122402845-adb1ea70fc29?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" />
-                                <div className="card-body">
-                                    <h5 className="catalogo">Nombre</h5>
+                            <a href="#">
+
+                                
+                                <div className="card" >
+                                    <img className="catalogo" src={oruga.photos[0]} />
+                                    <div className="card-body">
+                                        <h5 className="catalogo">{oruga.name}</h5>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                        
+                        )))}
+                    </div>
+                        
                     </div>
             </div>
             
