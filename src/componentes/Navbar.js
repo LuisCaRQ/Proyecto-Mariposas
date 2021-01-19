@@ -53,10 +53,6 @@ export const Navbar = () => {
                         </div>
                     </li>
 
-                    <li className="nav-item" id="elemento">
-                        <a className="nav-link" href="#"> Dashboard</a>
-                    </li>
-
                     {(logged)&&<li className="nav-item" id="elemento">
                         <a className="nav-link" href="/Aporte"> Aporte</a>
                     </li>}
