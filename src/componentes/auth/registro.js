@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {Link} from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import axios from 'axios'
+import { AuthContext } from './AuthContext'
 
 export const RegisterForm = () => {
+    const {user:{logged, isAdmin}} = useContext(AuthContext)
 
     const [{created}, setCreated] = useState({created: false})
 
@@ -32,11 +34,17 @@ export const RegisterForm = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-       
+            let res;
+            
             try {
-                const res = await axios.post('http://localhost:4000/api/users/register',
+                if (logged&&isAdmin) {
+                     res = await axios.post('http://localhost:4000/api/users/register',
+                    {...formValues,
+                    isAdmin: true})
+                }else{
+                     res = await axios.post('http://localhost:4000/api/users/register',
                     formValues
-                );
+                )}
                 console.log(res)
                 reset()
                 setValidation({ok: true, msg: ''})
@@ -57,7 +65,7 @@ export const RegisterForm = () => {
         <>
                  <form onSubmit={handleRegister}>
                      
-                     <h1>Registrarse</h1>
+                     
                      <div className='row'>
                         <div className='col-md-6'>
 
@@ -146,20 +154,22 @@ export const RegisterForm = () => {
                     
 
 
-                    <button className="btn btn-primary btn-custom mt-2">
+                    {(logged&&isAdmin)?<button className="btn btn-primary btn-custom mt-2">
+                       Registrar Admin
+                    </button>: <button className="btn btn-primary btn-custom mt-2">
                        Registrarse
-                    </button>
+                    </button>}
                     <hr/>
                         
 
 
-                    <h6>¿Ya tienes una cuenta?</h6>
-                    <Link 
-                        to="/auth/login"
+                    {(!logged)&&<h6>¿Ya tienes una cuenta?</h6>}
+                    {(!logged)&&<Link 
+                        to="/Login"
                         className="link">
                             Ingresar
                             
-                    </Link>
+                    </Link>}
                 
 
 
