@@ -6,7 +6,8 @@ class catalogoMariposas extends React.Component {
 
 
     state = {
-        mariposas: []
+        mariposas: [],
+        qword: ''
     }
     componentDidMount(){
         this.getMariposas()
@@ -20,6 +21,26 @@ class catalogoMariposas extends React.Component {
     }
 
 
+    onSearch = async (e) => {
+        e.preventDefault()
+        if(this.state.qword===''){
+            this.getMariposas()
+        }else{
+        const marip = await axios.get("http://localhost:4000/api/species/searchMariposa/"+this.state.qword)
+        this.setState({mariposas: marip.data})}
+
+    }
+
+    handleChange = e => {
+        
+        console.log(e)
+
+        this.setState({
+                [e.target.name]: e.target.value
+        })
+        console.log(this.state.qword)
+    }
+
     render() {
 
         return (
@@ -32,9 +53,9 @@ class catalogoMariposas extends React.Component {
                     <div className="catalogo">
 
                     <form class="barra">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"/>
+                            <input class="form-control mr-sm-2" name="qword" value={this.state.qword} type="search" placeholder="Buscar" aria-label="Search" onChange={this.handleChange}/>
                         <br/>
-                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" onClick={this.onSearch}>Buscar</button>
                         <br/>
                     </form>
                     <div className="row">
