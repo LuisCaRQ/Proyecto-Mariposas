@@ -20,6 +20,11 @@ class propuestas extends React.Component {
 
     }
 
+    handleAceptar = async (id) => {
+        await axios.put("http://localhost:4000/api/species/accept/"+id)
+        this.getAporte()
+    }
+
     render() {
 
         return (
@@ -43,7 +48,7 @@ class propuestas extends React.Component {
                                     </div>
                                     <hr/>
 
-                                    <button className="btn btn-primary">Aceptar</button>
+                                    <button className="btn btn-primary" onClick={() => this.handleAceptar(ap._id)}>Aceptar</button>
 
                          
                         </div>
