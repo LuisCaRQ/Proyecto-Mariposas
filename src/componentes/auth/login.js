@@ -7,7 +7,7 @@ import { types } from '../types/types'
 import axios from 'axios'
 
 
-export const Login = () => {
+export const LoginForm = () => {
     
     const {user, dispatch} = useContext(AuthContext)
     const [{ok, msg}, setValidation] = useState({ok:true, msg:''})
@@ -52,7 +52,6 @@ export const Login = () => {
             
             
                  <form onSubmit= { handleLogin }>
-                        <h1>Login</h1>
                         <input
                             type="text"
                             placeholder="correo"

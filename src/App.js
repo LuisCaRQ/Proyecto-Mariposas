@@ -2,7 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 import './includes/bootstrap'
 import './App.css';
 import Rutas from'../src/componentes/Rutas'
-import Navbar from './componentes/Navbar'
+import {Navbar} from './componentes/Navbar'
 import { AuthContext } from './componentes/auth/AuthContext';
 import { authReducer } from './componentes/auth/authReducer';
 

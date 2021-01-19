@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './../css/Style-Login.css';
 import axios from 'axios'
+import {LoginForm} from "../componentes/auth/login"
 class Login extends React.Component{
 
     render(){
@@ -11,15 +12,11 @@ class Login extends React.Component{
                         <h1>Iniciar Sesión</h1>
                 </div>
 
+                <div className="auth__main">
+                    <LoginForm></LoginForm>
 
-               
-
-
-
-
-
-
-
+                </div>
+                
                 <div>
                     <footer id="footerAbsolute">   
                         <div>Prototipo Metamorfosis</div>

@@ -1,11 +1,10 @@
 import React from 'react';
 import Style from './../css/Style-navbar.css';
 
-class Navbar extends React.Component{
-    render(){
-        return(
-            //size = "15"
-            <font face="Arial">
+
+export const Navbar = () => {
+    return (
+        <font face="Arial">
             <nav className="navbar navbar-expand-sm bg-white navbar-light" >
                 <a className="navbar-brand" href="/Pagina_principal"> 
                 <img src="./images/icono.png" alt="Logo" width="55" height="40" alt=""/>
@@ -75,8 +74,5 @@ class Navbar extends React.Component{
                 </div>
           </nav>
           </font>
-        );
-    }
+    )
 }
-
-export default Navbar;

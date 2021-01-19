@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import axios from 'axios'
 
-export const Register = () => {
+export const RegisterForm = () => {
 
     const [{created}, setCreated] = useState({created: false})
 
