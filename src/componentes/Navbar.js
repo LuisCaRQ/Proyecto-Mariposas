@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import Style from './../css/Style-navbar.css';
+import { AuthContext } from './auth/AuthContext';
+import { types } from './types/types';
 
 
 export const Navbar = () => {
+
+    const {user:{logged, nombre, isAdmin}, dispatch} = useContext(AuthContext)
+    const history = useHistory()
+    const handleLogout = ()=>{
+
+        dispatch({type: types.logout
+        })
+
+
+
+     }
+
     return (
         <font face="Arial">
             <nav className="navbar navbar-expand-sm bg-white navbar-light" >
@@ -10,7 +25,7 @@ export const Navbar = () => {
                 <img src="./images/icono.png" alt="Logo" width="55" height="40" alt=""/>
                 </a> 
                 
-              <strong><a className="navbar-brand" href="/Pagina_principal"> Metamorfosis</a></strong>
+              <strong><a className="navbar-brand" href="/Pagina_principal"> {(logged)?nombre:"Metamorfosis"}</a></strong>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -26,9 +41,9 @@ export const Navbar = () => {
                         <a className="nav-link" href="/Proceso_metamorfosis"> Proceso de metamorfosis</a>
                     </li>
 
-                    <li className="nav-item" id="elemento">
+                    {(logged)&&<li className="nav-item" id="elemento">
                         <a className="nav-link" href="#"> Reporte de avistamientos</a>
-                    </li>
+                    </li>}
 
                     <li className="nav-item dropdown" id="elemento">
                         <a className="nav-link dropdown-toggle" href="#" id="navadd" data-toggle="dropdown"> Catálogo </a>
@@ -42,33 +57,34 @@ export const Navbar = () => {
                         <a className="nav-link" href="#"> Dashboard</a>
                     </li>
 
-                    <li className="nav-item" id="elemento">
+                    {(logged)&&<li className="nav-item" id="elemento">
                         <a className="nav-link" href="/Aporte"> Aporte</a>
-                    </li>
+                    </li>}
 
-                    <li className="nav-item" id="elemento">
+                    {(!logged)&&<li className="nav-item" id="elemento">
                         <a className="nav-link" href="/Register"> Registrar</a>
-                    </li>
+                    </li>}
 
-                    <li className="nav-item" id="elemento">
+                    {(!logged)&&<li className="nav-item" id="elemento">
                         <a className="nav-link" href="/Login"> Iniciar sesión</a>
-                    </li>
+                    </li>}
 
                     <li className="nav-item" id="elemento">
                         <a className="nav-link" href="#"> ¿Quiénes somos?</a>
                     </li>
 
-                    <li className="nav-item" id="elemento">
+                   {(isAdmin)&&<li className="nav-item" id="elemento">
                         <a className="nav-link" href="/Administrador"> Administrador</a>
-                    </li>
+                    </li>}
 
-                    <button
-                        
+                    {(logged)&&<button
+                        href="/Login"
                         className="nav-item nav-link btn" 
+                        onClick={handleLogout}
                         
                     >
                         Logout
-                    </button>
+                    </button>}
 
                     </ul>
                 </div>
