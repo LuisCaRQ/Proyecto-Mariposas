@@ -8,7 +8,8 @@ class catalogo_oruga extends React.Component {
 
 
     state = {
-        orugas: []
+        orugas: [],
+        qword: ''
     }
     componentDidMount(){
         this.getOrugas()
@@ -18,6 +19,26 @@ class catalogo_oruga extends React.Component {
         console.log(orugas.data.result)
         this.setState({orugas: orugas.data.result})
 
+    }
+
+    onSearch = async (e) => {
+        e.preventDefault()
+        if(this.state.qword===''){
+            this.getOrugas()
+        }else{
+        const oru = await axios.get("http://localhost:4000/api/species/searchOruga/"+this.state.qword)
+        this.setState({orugas: oru.data})}
+
+    }
+
+    handleChange = e => {
+        
+        console.log(e)
+
+        this.setState({
+                [e.target.name]: e.target.value
+        })
+        console.log(this.state.qword)
     }
 
     render() {
@@ -33,9 +54,9 @@ class catalogo_oruga extends React.Component {
                     <div className="catalogo">
 
                     <form class="barra">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"/>
+                            <input class="form-control mr-sm-2" type="search" name="qword" placeholder="Buscar" aria-label="Search" onChange={this.handleChange}/>
                         <br/>
-                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" onClick={this.onSearch}>Buscar</button>
                         <br/>
                     </form>
                     <div className="row">
