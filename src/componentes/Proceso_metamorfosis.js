@@ -120,7 +120,7 @@ class proceso_metamorfosis extends React.Component{
                
                 <div>
                     <footer id="footerBottom" >   
-                        <div>Prototipo Metamorfosis</div>
+                        <div>Proyecto Metamorfosis</div>
                         <div>Versión 1.2 por Metamorfosis en Instituto Tecnológico de Costa Rica</div>
                         <div>Semestre II de 2020. Administración de Proyectos</div>            
                     </footer>
