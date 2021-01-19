@@ -46,7 +46,7 @@ class Ver_especie extends React.Component{
                 </div>
 
                 <div class="verEspecieRight">
-                    <h1 class="proceso">Sin información:</h1>  
+                    <h1 class="proceso">{this.state.match.stage}:</h1>  
                     <img className="verEspecie" src={this.state.match.photos} />
                 </div>
                 <div>
@@ -73,7 +73,7 @@ class Ver_especie extends React.Component{
                 </div>
 
                 <div class="center"> 
-                <img className="verEspecieG" src={"https://images.unsplash.com/photo-1557318041-1ce374d55ebf?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"} />   
+                <img className="verEspecieG" src={this.state.especie.photos} />   
                 
                 </div>
 
