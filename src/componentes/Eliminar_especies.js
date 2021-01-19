@@ -26,7 +26,7 @@ class Eliminar_especies extends React.Component {
 
                                     aqiasd
                                     <Form.Label>Nombre cientifico de la especie:</Form.Label>
-                                        <h5 class="EliminarEspecie">Aquí voy</h5>
+                                         <h5 class="EliminarEspecie">Aquí voy</h5>
                                         <hr class="EliminarEspecie" />
                                         <br />
                                         <Form.Label>Familia de la especie:</Form.Label>
@@ -71,6 +71,13 @@ class Eliminar_especies extends React.Component {
                     </p >
 
 
+                </div>
+                <div>
+                    <footer id="footerBottom" >   
+                        <div>Prototipo Metamorfosis</div>
+                        <div>Versión 1.2 por Metamorfosis en Instituto Tecnológico de Costa Rica</div>
+                        <div>Semestre II de 2020. Administración de Proyectos</div>            
+                    </footer>
                 </div>
             </div>
         );
