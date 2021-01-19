@@ -73,7 +73,8 @@ export const Navbar = () => {
                         <a className="nav-link" href="#"> ¿Quiénes somos?</a>
                     </li>
 
-                   {(isAdmin)&&<li className="nav-item" id="elemento">
+                   {//(isAdmin)&&<li className="nav-item" id="elemento">
+                   <li className="nav-item" id="elemento">
                         <a className="nav-link" href="/Administrador"> Administrador</a>
                     </li>}
 

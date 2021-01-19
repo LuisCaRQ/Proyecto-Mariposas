@@ -8,6 +8,7 @@ import CatalogoMariposas from './CatalogoMariposas';
 import Propuestas from './Propuestas';
 import Login from './Login';
 import Registrar from './Registrar';
+import Dato_curioso from './Agregar_dato_curioso';
 
 
 import {
@@ -30,9 +31,16 @@ function rutas() {
           <Route path="/CatalogoMariposas">     <CatalogoMariposas />      </Route>
           <Route path="/AgregarEspecie">        <AgregarEspecie />         </Route>
           <Route path="/Propuestas">            <Propuestas />              </Route>
+<<<<<<< Updated upstream
           <Route path="/Login">                 <Login />                   </Route>
           <Route path="/Register">              <Registrar />             </Route>
           <Route path="/Avistamientos">         <Avistamientos />         </Route>
+=======
+          <Route path="/Login">                 <Login />                 </Route>
+          <Route path="/Register">              <Registrar />           </Route>
+          <Route path="/Agregar_dato_curioso">  <Dato_curioso  />           </Route>
+
+>>>>>>> Stashed changes
           <Route path="/">  <Principal /> </Route>
           
         </Switch>
