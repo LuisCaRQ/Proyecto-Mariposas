@@ -1,6 +1,7 @@
 import React from 'react';
 import Style from './../css/Style-Register.css';
 import axios from 'axios'
+import { RegisterForm } from './auth/registro';
 class Registrar_Administrador extends React.Component{
 
     render(){
@@ -13,6 +14,10 @@ class Registrar_Administrador extends React.Component{
 
 
                
+                <div className="auth__main">
+                    <RegisterForm></RegisterForm>
+
+                </div>
 
 
 
