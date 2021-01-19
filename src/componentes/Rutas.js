@@ -9,7 +9,7 @@ import Propuestas from './Propuestas';
 import Login from './Login';
 import Registrar from './Registrar';
 import Dato_curioso from './Agregar_dato_curioso';
-
+import Eliminar_especies from './Eliminar_especies';
 
 import {
   BrowserRouter as Router,
@@ -32,10 +32,10 @@ function rutas() {
           <Route path="/AgregarEspecie">        <AgregarEspecie />         </Route>
           <Route path="/Propuestas">            <Propuestas />              </Route>
           <Route path="/Avistamientos">         <Avistamientos />         </Route>
-
           <Route path="/Login">                 <Login />                 </Route>
           <Route path="/Register">              <Registrar />           </Route>
           <Route path="/Agregar_dato_curioso">  <Dato_curioso  />           </Route>
+          <Route path="/Eliminar_especies">     <Eliminar_especies  />           </Route>
 
           <Route path="/">  <Principal /> </Route>
           

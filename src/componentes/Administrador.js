@@ -19,7 +19,7 @@ class administrador extends React.Component{
                             <br/>  <br/>
                             <a href="/AgregarEspecie">  <button class ="button admin">Agregar especies</button> </a>
                             <br/>  <br/>
-                            <a href="#">  <button class ="button admin">Eliminar especies</button> </a>
+                            <a href="/Eliminar_especies">  <button class ="button admin">Eliminar especies</button> </a>
                             <br/>  <br/>
                             <a href="/Agregar_dato_curioso">  <button class ="button admin">Agregar dato curioso</button> </a>
                             <br/>  <br/>
