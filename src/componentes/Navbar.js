@@ -73,16 +73,17 @@ export const Navbar = () => {
                 
                         <a className="nav-link" href="/Administrador"> Administrador</a>
                     </li>}
-
-                    {(logged)&&<button
-                        href="/Login"
-                        className="nav-item nav-link btn" 
-                        onClick={handleLogout}
+                    
+                    <a href="/Pagina_principal">
+                    {(logged)&&<button              
                         
+                        className="nav-item nav-link btn" 
+                        onClick={handleLogout}                   
                     >
                         Logout
                     </button>}
-
+                        
+                    </a>
                     </ul>
                 </div>
           </nav>

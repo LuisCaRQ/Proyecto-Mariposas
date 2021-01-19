@@ -50,7 +50,7 @@ function rutas() {
           <Route path="/BloquearUsuario">          <BloquearUsuario />         </Route>
           <Route path="/Desbloquear_Usuario">      <Desbloquear_Usuario />     </Route>
           <Route path="/QuienesSomos">             <QuienesSomos />     </Route>
-          <Route path="/VerEspecie/:id"              component={VerEspecie}    />
+          <Route path="/VerEspecie/:id"             component={VerEspecie}    />
 
           <Route path="/">  <Principal /> </Route>
 
