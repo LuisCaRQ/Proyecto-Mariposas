@@ -57,39 +57,12 @@ class Eliminar_especies extends React.Component {
 
     onSubmit = async (e) => {
 
-        e.preventDefault();
-
-        let fotoUrl
-
-        if(this.state.photo === null){
-            fotoUrl = "https://res.cloudinary.com/dhh7tuvtw/image/upload/v1610998076/e2cvgro6kwt7f7kijm5o.jpg"
-
-
-        }else{
-            
-            console.log("ff xd")
-            const formData = new FormData();
-            formData.append('upload_preset','unitarum-img');
-            formData.append('file',this.state.photo);
+        //e.preventDefault();
 
         
-            const fotoRes = await axios.post('https://api.cloudinary.com/v1_1/dhh7tuvtw/upload', formData)
-            console.log(fotoRes) 
-
-            fotoUrl = fotoRes.data.secure_url;
-        }
         try {
             console.log(this.state.especieSeleccionada)
-            await axios.delete('http://localhost:4000/api/species/delete/'+this.state.especieSeleccionada, {
-                name: this.state.name,
-                scientificName: this.state.scientificName,
-                family: this.state.family,
-                genus: this.state.genus,
-                description: this.state.description,
-                stage: this.state.stage,
-                photos: [fotoUrl],
-                accepted: true
-             })
+            await axios.delete('http://localhost:4000/api/species/delete/'+this.state.especieSeleccionada, {})
 
              
              this.setState({ok: true, errors: {}, msg: '', created: true})
