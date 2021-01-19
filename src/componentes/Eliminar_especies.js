@@ -69,7 +69,7 @@ class Eliminar_especies extends React.Component {
           
         } catch (error) {
             console.log(error)
-           // this.setState({ok: error.response.data.ok, msg: error.response.data.msg})
+            
             console.log(this.state)
                 
         }

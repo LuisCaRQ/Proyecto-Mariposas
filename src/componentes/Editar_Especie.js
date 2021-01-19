@@ -79,7 +79,7 @@ class Editar_especie extends React.Component {
 
     onSubmit = async (e) => {
 
-        e.preventDefault();
+      
 
         let fotoUrl
 
