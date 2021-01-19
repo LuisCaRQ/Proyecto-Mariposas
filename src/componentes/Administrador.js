@@ -15,7 +15,7 @@ class administrador extends React.Component{
                 <div class="center">
                     <div class="administradorLeft">
                         <div>
-                            <a href="#">  <button class ="button admin" >Propuestas</button> </a>
+                            <a href="/Propuestas">  <button class ="button admin" >Propuestas</button> </a>
                             <br/>  <br/>
                             <a href="/AgregarEspecie">  <button class ="button admin">Agregar especies</button> </a>
                             <br/>  <br/>

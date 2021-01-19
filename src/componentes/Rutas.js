@@ -5,6 +5,8 @@ import Administrador from './Administrador';
 import AgregarEspecie from './AgregarEspecie';
 import CatalogoOrugas from './CatalogoOrugas';
 import CatalogoMariposas from './CatalogoMariposas';
+import Propuestas from './Propuestas';
+
 
 import {
   BrowserRouter as Router,
@@ -24,6 +26,7 @@ function rutas() {
           <Route path="/CatalogoOrugas">        <CatalogoOrugas />         </Route>
           <Route path="/CatalogoMariposas">     <CatalogoMariposas />         </Route>
           <Route path="/AgregarEspecie">        <AgregarEspecie />         </Route>
+          <Route path="/Propuestas">            <Propuestas />         </Route>
           <Route path="/">  <Principal /> </Route>
           
         </Switch>
