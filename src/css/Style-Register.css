@@ -25,3 +25,14 @@
 	color: #fff;
 	position: relative
 }
+
+.auth__main {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    height: 50vh;
+    width: 100wh;
+    
+}

@@ -10,19 +10,22 @@ export const RegisterForm = () => {
     const [{ok, msg}, setValidation] = useState({ok:true, msg:''})
 
     const [formValues, handleInputChange, reset]=useForm({
-        identificacion: '',
-        nombre: '',
-        apellido1: '',
-        apellido2: '',
-        telefono: '',
-        correo: '',
+       
+        name: '',
+        lastname1: '',
+        lastname2: '',
+        email: '',
         password: '',
         password2: ''
 
     })
 
-    const {identificacion, nombre, apellido1, apellido2,
-            telefono, correo, password, password2} = formValues;
+    const { name,
+    lastname1,
+    lastname2,
+    email,
+    password,
+    password2} = formValues;
 
 
 
@@ -31,7 +34,7 @@ export const RegisterForm = () => {
         e.preventDefault();
        
             try {
-                const res = await axios.post('http://localhost:4000/api/miembros/',
+                const res = await axios.post('http://localhost:4000/api/users/register',
                     formValues
                 );
                 console.log(res)
@@ -61,10 +64,10 @@ export const RegisterForm = () => {
                                 <input
                                     type="text"
                                     placeholder="Nombre"
-                                    name="nombre"
+                                    name="name"
                                     className="form-control"
                                     autoComplete="off"
-                                    value={ nombre }
+                                    value={ name }
                                     onChange={handleInputChange}
                                 />
                                 <br/>
@@ -72,10 +75,10 @@ export const RegisterForm = () => {
                                 <input
                                 type="text"
                                 placeholder="Primer Apellido"
-                                name="apellido1"
+                                name="lastname1"
                                 className="form-control"
                                 autoComplete="off"
-                                value={ apellido1 }
+                                value={ lastname1 }
                                 onChange={handleInputChange}
                                 />
                                 <br/>
@@ -83,10 +86,10 @@ export const RegisterForm = () => {
                                 <input
                                     type="text"
                                     placeholder="Segundo Apellido"
-                                    name="apellido2"
+                                    name="lastname2"
                                     className="form-control"
                                     autoComplete="off"
-                                    value={ apellido2 }
+                                    value={ lastname2 }
                                     onChange={handleInputChange}
                                 />
                                 <br/>   
@@ -97,10 +100,10 @@ export const RegisterForm = () => {
                                 <input
                                     type="text"
                                     placeholder="correo"
-                                    name="correo"
+                                    name="email"
                                     className="form-control"
                                     autoComplete="off"
-                                    value={ correo }
+                                    value={ email }
                                     onChange={handleInputChange}
                                 />
                                 <br/>
