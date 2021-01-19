@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './../css/Style-aporte.css';
 import { Button } from "react-bootstrap";
 
-class catalogoMariposas extends React.Component {
+class propuestas extends React.Component {
     render() {
 
         return (
@@ -51,4 +51,4 @@ class catalogoMariposas extends React.Component {
     }
 }
 
-export default catalogoMariposas;
+export default propuestas;

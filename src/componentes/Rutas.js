@@ -6,6 +6,8 @@ import AgregarEspecie from './AgregarEspecie';
 import CatalogoOrugas from './CatalogoOrugas';
 import CatalogoMariposas from './CatalogoMariposas';
 import Propuestas from './Propuestas';
+import Login from './Login';
+import Registrar from './Registrar';
 
 
 import {
@@ -24,9 +26,11 @@ function rutas() {
           <Route path="/Aporte">                <Aporte />                </Route>
           <Route path="/Administrador">         <Administrador />         </Route>
           <Route path="/CatalogoOrugas">        <CatalogoOrugas />         </Route>
-          <Route path="/CatalogoMariposas">     <CatalogoMariposas />         </Route>
+          <Route path="/CatalogoMariposas">     <CatalogoMariposas />      </Route>
           <Route path="/AgregarEspecie">        <AgregarEspecie />         </Route>
-          <Route path="/Propuestas">            <Propuestas />         </Route>
+          <Route path="/Propuestas">            <Propuestas />              </Route>
+          <Route path="/Login">                 <Login />                 </Route>
+          <Route path="/Register">              <Registrar />           </Route>
           <Route path="/">  <Principal /> </Route>
           
         </Switch>

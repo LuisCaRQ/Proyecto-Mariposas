@@ -48,11 +48,11 @@ class Navbar extends React.Component{
                     </li>
 
                     <li className="nav-item" id="elemento">
-                        <a className="nav-link" href="#"> Registrar</a>
+                        <a className="nav-link" href="/Register"> Registrar</a>
                     </li>
 
                     <li className="nav-item" id="elemento">
-                        <a className="nav-link" href="#"> Iniciar sesión</a>
+                        <a className="nav-link" href="/Login"> Iniciar sesión</a>
                     </li>
 
                     <li className="nav-item" id="elemento">
