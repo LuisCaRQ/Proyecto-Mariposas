@@ -63,7 +63,7 @@ class catalogo_oruga extends React.Component {
                     {this.state.orugas.map((oruga => (
                         <div className="col-md-4 auth_holder mr-10 p-2 " key={oruga._id}>
 
-                            <a href="#">
+                            <a href="/verEspecie">
 
                                 
                                 <div className="card" >

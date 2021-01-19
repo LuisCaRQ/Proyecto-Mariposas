@@ -62,7 +62,7 @@ class catalogoMariposas extends React.Component {
                     {this.state.mariposas.map((mariposa => (
                         <div className="col-md-4 auth_holder mr-10 p-2 " key={mariposa._id}>
 
-                            <a href="#">
+                            <a href="/verEspecie">
 
                                 
                                 <div className="card" >
