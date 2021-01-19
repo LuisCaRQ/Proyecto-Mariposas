@@ -1,7 +1,19 @@
 import React from 'react';
 import Style from './../css/Style-principal.css';
-
+import axios from 'axios'
 class principal extends React.Component{
+
+    state={
+        datoCurioso: ''
+    }
+
+    async componentDidMount(){
+        const dato = await axios.get('http://localhost:4000/api/facts/getRandomFact')
+      
+        this.setState({datoCurioso: dato.data.fact})
+
+    }  
+
     render(){
         
         return(
@@ -10,7 +22,7 @@ class principal extends React.Component{
                         <h1>Bienvenido</h1>
                 </div>
                 <div id="datoCurioso">
-                    ¿Sabías que las mariposas saborean su comida con las patas? {/*Acá va el dato curioso, de la base de datos*/}
+                    ¿Sabías que {this.state.datoCurioso}? {/*Acá va el dato curioso, de la base de datos*/}
                     <hr />
                 </div>
                 <div>
