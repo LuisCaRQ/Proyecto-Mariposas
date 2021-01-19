@@ -1,53 +1,59 @@
 import React from 'react';
 import Style from './../css/Style-aporte.css';
 import { Button } from "react-bootstrap";
+import axios from 'axios';
 
 class propuestas extends React.Component {
+    state = {
+        aportes: []
+    }
+    componentDidMount() {
+
+        this.getAporte()
+
+    }
+
+    getAporte = async () => {
+        const ap = await axios.get("http://localhost:4000/api/species/getAllContributions/")
+        this.setState({ aportes: ap.data.result })
+        console.log(ap.data.result)
+
+    }
+
     render() {
 
         return (
             <div>
-                <div class="center_VerAporte">
 
-                        <div class="aporteLeft_VerAporte">
-                            <div className="cardVerAporte" >
-                                <img className="aporte" src="https://images.unsplash.com/photo-1566190777932-efa8ae5d2260?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1355&q=80" />
-                            </div>
+
+
+                {(this.state.aportes.length > 0) && (
+
+                    this.state.aportes.map((ap => (
+                        <div className="center_VerAporte card_border mb-5">
+                            
+                                <img className="aporte" src={ap.photos[0]} alt="Card image cap"/>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{ap.name}</h5>
+                                        <p className="card-text">{ap.description}</p>
+                                        <h6 className="card-title">Nombre Cientifico: {ap.scientificName}</h6>
+                                        <h6 className="card-title">Familia: {ap.family}</h6>
+                                        <h6 className="card-title">Género: {ap.genus}</h6>
+                                        <h6 className="card-title">Etapa: {ap.stage}</h6>
+                                    </div>
+                                    <hr/>
+
+                                    <button className="btn btn-primary">Aceptar</button>
+
+                         
+                        </div>
+                        ))))}
+
                         </div>
 
-                        <div class="aporteRight_VerAporte">
-                            <div class="textoAporte">
-                            Usuario: 
-                            <br/>
-                            Nombre de especie:
-                            <br/>
-                            Nombre cientifico: 
-                            <br/>
-                            Nombre familia: 
-                            <br/>
-                            Genero:
-                            <br/>
-                            Descripción: 
-                            <br/>
-                            Etapa de especie: 
-                            <br/>
-                            País:
-                            <br/>
-                            Provincia:
-                            <br/>
-                            Cantón:
-                            <br/>
-                            Distrito:
-                            </div>
-                        </div>
-                </div>
-                    <a href="#">  <button class ="button aporte">Bloquear</button> </a>
-                    <a href="#">  <button class ="button aporte">Aprobar</button> </a>
-                    <a href="#">  <button class ="button aporte">Rechazar</button> </a>
-                <hr />
-            </div>
 
-        );
+
+                    );
     }
 }
 

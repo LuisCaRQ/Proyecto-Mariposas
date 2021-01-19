@@ -67,8 +67,8 @@ div.cardVerAporte{
 }
 
 img.aporte{   
-    width:500px;
-    height:350px;
+    width:400px;
+    
 }
 
 button.aporte{   
@@ -82,4 +82,12 @@ button.aporte{
     font-size: 15px;
     font-weight: bold;
     width: 200px;
+}
+
+div.card_border{
+    width: 500px;
+    height: 1000px;
+    border-style: solid;
+    border-width: 1px;
+    
 }
