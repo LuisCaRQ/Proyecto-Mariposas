@@ -6,6 +6,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Avistamientos from './Avistamientos';
 
 function rutas() {
   return (
@@ -14,7 +15,7 @@ function rutas() {
         <Switch>
           <Route path="/Pagina_principal">  <Principal /> </Route>
           <Route path="/Proceso_metamorfosis">  <Proceso_metamorfosis /> </Route>
-
+          <Route path="/Avistamientos"> <Avistamientos /> </Route>
           <Route path="/">  <Principal /> </Route>
         </Switch>
       </Router>
